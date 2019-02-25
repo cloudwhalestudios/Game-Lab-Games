@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 441232400}
   m_Layer: 0
   m_Name: Golf Ball
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,9 +129,11 @@ MonoBehaviour:
   powerBar: {fileID: 0}
   minPowerColor: {r: 0, g: 1, b: 0, a: 1}
   maxPowerColor: {r: 1, g: 0, b: 0, a: 1}
-  forceMultiplier: 5
+  yawStep: 10
+  forceMultiplier: 100
   forceMode: 1
   currentState: 1
   rb: {fileID: 0}
   filling: 1
   elapsedTime: 0
+  yaw: 0
