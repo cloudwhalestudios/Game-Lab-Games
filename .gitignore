@@ -34,3 +34,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+# Custom ignores
+
+# Ignore FMOD asset file since parts
+# of it are different for each user (temporary solution)
+"2 Button Games\Assets\Resources\FMODStudioSettings.asset"
