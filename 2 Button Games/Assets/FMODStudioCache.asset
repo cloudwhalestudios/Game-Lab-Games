@@ -14,14 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114789550205593672}
-  - {fileID: 114697427490298050}
+  - {fileID: 114524089500345150}
   EditorEvents: []
   MasterBanks:
   - {fileID: 114697427490298050}
+  - {fileID: 114524089500345150}
   StringsBanks:
   - {fileID: 114789550205593672}
-  stringsBankWriteTime: 636867345561323392
+  stringsBankWriteTime: 636867213680000000
   cacheVersion: 3
+--- !u!114 &114524089500345150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: G:\Users\Luuk\Dropbox\GDD Year 2\UNITY\Thing\Cloudwhale Studio\2 Button Games\FMOD\FmodProjectFile\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636867213680000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 12474
+  Exists: 1
 --- !u!114 &114542822103422656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +101,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 12474
-  Exists: 1
+  Exists: 0
 --- !u!114 &114789550205593672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\FmodProjectFile\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636867345561323392
+  lastModified: 636867213680000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
