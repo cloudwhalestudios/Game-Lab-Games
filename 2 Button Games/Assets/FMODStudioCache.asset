@@ -13,16 +13,54 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114789550205593672}
-  - {fileID: 114524089500345150}
+  - {fileID: 114491335392164006}
+  - {fileID: 114240604482872808}
   EditorEvents: []
   MasterBanks:
-  - {fileID: 114697427490298050}
-  - {fileID: 114524089500345150}
+  - {fileID: 114240604482872808}
   StringsBanks:
-  - {fileID: 114789550205593672}
-  stringsBankWriteTime: 636867213680000000
+  - {fileID: 114491335392164006}
+  stringsBankWriteTime: 636875517260180475
   cacheVersion: 3
+--- !u!114 &114240604482872808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\BEAST-PORTABLE\Documents\Gamedev\Game-Lab\2 Button Games\FMOD\FmodProjectFile\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636875517260110668
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 12474
+  Exists: 1
+--- !u!114 &114491335392164006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\FmodProjectFile\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636875517260180475
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 672
+  Exists: 1
 --- !u!114 &114524089500345150
 MonoBehaviour:
   m_ObjectHideFlags: 0

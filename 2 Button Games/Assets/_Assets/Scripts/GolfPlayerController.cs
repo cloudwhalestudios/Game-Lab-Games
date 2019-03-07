@@ -112,6 +112,7 @@ public class GolfPlayerController : MonoBehaviour
         // Use the cameras forward for the direction
         Vector3 forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized;
         rb.AddForce(forward * powerBar.value * forceMultiplier, forceMode);
+        Debug.DrawLine(transform.position, transform.position + forward * powerBar.value * forceMultiplier, Color.white, 2f);
     }
 
     private void DisableTurning()
@@ -179,11 +180,5 @@ public class GolfPlayerController : MonoBehaviour
         }
 
         return false;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
     }
 }
