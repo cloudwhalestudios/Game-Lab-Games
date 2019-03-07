@@ -13,7 +13,7 @@ public class MenuController : MonoBehaviour
     public GameObject CreditsScreen;
 
     [Header("Button Sounds")]
-    public bool AlternateSounds;
+    public bool alternateSounds;
 
     [Header("Button Sounds")]
     public AudioSource launch;
@@ -34,21 +34,13 @@ public class MenuController : MonoBehaviour
     private bool goingForward;
     private bool goingGame;
 
-    /*
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
-    */
-
     public void MouseHover()
     {
-        select.Play(0);
+    	if (!alternateSounds) {
+    		select.Play(0);
+    	} else if (alternateSounds) {
+    		selectAlt.Play(0);
+    	}
     }
 
     private void DeactivateAllScreens()
@@ -58,44 +50,44 @@ public class MenuController : MonoBehaviour
         OptionsScreen.SetActive(false);
         CreditsScreen.SetActive(false);
     }
+    private void GoToScreen(GameObject targetScreen, AudioSource sfx, AudioSource altSfx = null) {
+    	DeactivateAllScreens();
+    	if (targetScreen != null) {
+    		targetScreen.SetActive(true);
+    	}
+    	if (sfx != null && !alternateSounds) {
+    		sfx.Play(0);
+    	} else if (altSfx != null && alternateSounds) {
+    		altSfx.Play(0);
+    	}
+    }
     public void GoToCredits()
     {
-        DeactivateAllScreens();
-        CreditsScreen.SetActive(true);
-        forward.Play(0);
+        GoToScreen(CreditsScreen, forward, forwardAlt);
     }
     public void GoToOptions()
     {
-        DeactivateAllScreens();
-        OptionsScreen.SetActive(true);
-        forward.Play(0);
+        GoToScreen(OptionsScreen, forward, forwardAlt);
     }
     public void GoToGames()
     {
-        DeactivateAllScreens();
-        GamesScreen.SetActive(true);
-        forward.Play(0);
+        GoToScreen(GamesScreen, forward, forwardAlt);
     }
     public void GoToMainMenu()
     {
-        DeactivateAllScreens();
-        MainMenuScreen.SetActive(true);
-        backward.Play(0);
+        GoToScreen(MainMenuScreen, backward, backwardAlt);
     }
 
     public void SelectedGame1()
     {
-        DeactivateAllScreens();
-        gameSelect.Play(0);
+        GoToScreen(null, gameSelect, gameSelectAlt);
     }
     public void SelectedGame2()
     {
-        DeactivateAllScreens();
-        gameSelect.Play(0);
+        GoToScreen(null, gameSelect, gameSelectAlt);
     }
     public void SelectedGame3()
     {
-        DeactivateAllScreens();
-        gameSelect.Play(0);
-    }
+        GoToScreen(null, gameSelect, gameSelectAlt);
+    }    
 }
