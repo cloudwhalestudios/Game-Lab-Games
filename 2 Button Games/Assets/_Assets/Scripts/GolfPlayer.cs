@@ -13,12 +13,16 @@ public class GolfPlayer : MonoBehaviour//, ITwoButtonsActions
 
     private Rigidbody rb;
 
+    [ReadOnly] public static int id;
+
     public void Awake()
     {
         //controls = (GolfControls) playerInput.actions.;
         //controls.TwoButtons.SetCallbacks(this);
 
         rb = GetComponent<Rigidbody>();
+
+        id = GameManager.Instance.playStateController.AddPlayer();
 
         controls.TwoButtons.PrimaryAction.performed += PrimaryAction;
         controls.TwoButtons.SecondaryAction.performed += SecondaryAction;
