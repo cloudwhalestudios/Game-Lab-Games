@@ -1,0 +1,215 @@
+{
+    "name": "InputMaster",
+    "maps": [
+        {
+            "name": "TwoButtons",
+            "id": "cb9c44ea-cc5d-4462-8d7f-77a18828376e",
+            "actions": [
+                {
+                    "name": "PrimaryAction",
+                    "id": "72f52776-448f-48de-a861-44577b0efdf1",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "bindings": []
+                },
+                {
+                    "name": "SecondaryAction",
+                    "id": "72f52776-448f-48de-a861-44577b0efdf1",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "PrimaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Mouse",
+                    "action": "PrimaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<XboxOneGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XBoxOneGamepad",
+                    "action": "PrimaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XInputControllerWindows",
+                    "action": "PrimaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "*/{Accept}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "CustomHID (TwoButtonSwitch)",
+                    "action": "PrimaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "SecondaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Mouse",
+                    "action": "SecondaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<XboxOneGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XBoxOneGamepad",
+                    "action": "SecondaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XInputControllerWindows",
+                    "action": "SecondaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "*/{Back}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "CustomHID (TwoButtonSwitch)",
+                    "action": "SecondaryAction",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "basedOn": "",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Mouse",
+            "basedOn": "",
+            "bindingGroup": "Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "XBoxOneGamepad",
+            "basedOn": "",
+            "bindingGroup": "XBoxOneGamepad",
+            "devices": [
+                {
+                    "devicePath": "<XboxOneGamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "XInputController",
+            "basedOn": "",
+            "bindingGroup": "XInputControllerWindows",
+            "devices": [
+                {
+                    "devicePath": "<XInputControllerWindows>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "CustomHID (TwoButtonSwitch)",
+            "basedOn": "",
+            "bindingGroup": "CustomHID (TwoButtonSwitch)",
+            "devices": [
+                {
+                    "devicePath": "<HID>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
