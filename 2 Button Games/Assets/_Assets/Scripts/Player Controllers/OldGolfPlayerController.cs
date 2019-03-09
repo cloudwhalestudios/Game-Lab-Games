@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GolfPlayerController : MonoBehaviour
+public class OldGolfPlayerController : MonoBehaviour
 {
     public enum State
     {

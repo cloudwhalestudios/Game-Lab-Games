@@ -2273,12 +2273,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2843117626308655457}
-  - component: {fileID: 5801672398925700961}
+  - component: {fileID: 7876328497599059035}
+  - component: {fileID: 6182134685857522964}
   - component: {fileID: 5801672398925700962}
   - component: {fileID: 8693759652258495740}
   - component: {fileID: 2046744242638298487}
   m_Layer: 0
-  m_Name: Golf Player
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2299,49 +2300,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5801672398925700961
+--- !u!114 &7876328497599059035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5801672398925700960}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d308f5313a3f5945aff11df286d6a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: 11400000, guid: 43a156c4f9097444b9f943a2a15bdd65, type: 3}
-  m_NotificationBehavior: 3
-  m_UIEventSystem: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Experimental.Input.Plugins.PlayerInput.PlayerInput+DeviceLostEvent,
-      Unity.InputSystem, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Experimental.Input.Plugins.PlayerInput.PlayerInput+DeviceRegainedEvent,
-      Unity.InputSystem, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Experimental.Input.Plugins.PlayerInput.PlayerInput+ActionEvent,
-      Unity.InputSystem, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: dd6f9c3e-f0e2-4bef-b930-63e74a0dfc49
-    m_ActionName: 
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Experimental.Input.Plugins.PlayerInput.PlayerInput+ActionEvent,
-      Unity.InputSystem, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 18d6b1b0-97ac-44d5-a1fe-f6c4039d568c
-    m_ActionName: 
-  m_AutoSwitchControlScheme: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: '{cb9c44ea-cc5d-4462-8d7f-77a18828376e}'
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  pID: -1
+  deviceName: N/A
+  deviceID: -1
+  menuController: {fileID: 0}
+  golfController: {fileID: 5801672398925700962}
+  isPlayerOne: 0
+--- !u!114 &6182134685857522964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801672398925700960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35e8b430502346459f9651a8e04dacb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAdvanceTimer: 5
+  inputExtension: 1
+  elapsedAdvanceTime: 0
+  takeInfluence: 0
 --- !u!114 &5801672398925700962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2354,10 +2346,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cf5c692ffb9d7418c9faf16531025f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controls:
-    m_Asset: {fileID: 11400000, guid: 43a156c4f9097444b9f943a2a15bdd65, type: 3}
-  forceMultiplier: 2
-  mode: 1
+  golfBallPreset: {fileID: 11400000, guid: f11b7f3d95ac0764aa2d288789beff8d, type: 2}
+  applyPreset: 0
+  isOnGreen: 0
+  selectedPathParent: {fileID: 0}
+  pointInterpolation: 0.2
+  minAngle: 0
+  maxAngle: 0
+  angleStep: 5
+  minDistance: 0
+  maxDistance: 0
+  distanceFields: 4
+  distanceAnglePrecision: 0
 --- !u!54 &8693759652258495740
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2368,7 +2368,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 0.045
   m_Drag: 0.09
-  m_AngularDrag: 10
+  m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1

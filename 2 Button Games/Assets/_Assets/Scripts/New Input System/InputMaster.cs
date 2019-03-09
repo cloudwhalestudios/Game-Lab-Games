@@ -26,10 +26,6 @@ public class InputMaster : InputActionAssetReference
     }
     private void Uninitialize()
     {
-        if (m_TwoButtonsActionsCallbackInterface != null)
-        {
-            TwoButtons.SetCallbacks(null);
-        }
         m_TwoButtons = null;
         m_TwoButtons_PrimaryAction = null;
         m_TwoButtons_SecondaryAction = null;
@@ -38,10 +34,8 @@ public class InputMaster : InputActionAssetReference
     public void SetAsset(InputActionAsset newAsset)
     {
         if (newAsset == asset) return;
-        var TwoButtonsCallbacks = m_TwoButtonsActionsCallbackInterface;
         if (m_Initialized) Uninitialize();
         asset = newAsset;
-        TwoButtons.SetCallbacks(TwoButtonsCallbacks);
     }
     public override void MakePrivateCopyOfActions()
     {
@@ -49,7 +43,6 @@ public class InputMaster : InputActionAssetReference
     }
     // TwoButtons
     private InputActionMap m_TwoButtons;
-    private ITwoButtonsActions m_TwoButtonsActionsCallbackInterface;
     private InputAction m_TwoButtons_PrimaryAction;
     private InputAction m_TwoButtons_SecondaryAction;
     public struct TwoButtonsActions
@@ -64,28 +57,6 @@ public class InputMaster : InputActionAssetReference
         public bool enabled { get { return Get().enabled; } }
         public InputActionMap Clone() { return Get().Clone(); }
         public static implicit operator InputActionMap(TwoButtonsActions set) { return set.Get(); }
-        public void SetCallbacks(ITwoButtonsActions instance)
-        {
-            if (m_Wrapper.m_TwoButtonsActionsCallbackInterface != null)
-            {
-                PrimaryAction.started -= m_Wrapper.m_TwoButtonsActionsCallbackInterface.OnPrimaryAction;
-                PrimaryAction.performed -= m_Wrapper.m_TwoButtonsActionsCallbackInterface.OnPrimaryAction;
-                PrimaryAction.cancelled -= m_Wrapper.m_TwoButtonsActionsCallbackInterface.OnPrimaryAction;
-                SecondaryAction.started -= m_Wrapper.m_TwoButtonsActionsCallbackInterface.OnSecondaryAction;
-                SecondaryAction.performed -= m_Wrapper.m_TwoButtonsActionsCallbackInterface.OnSecondaryAction;
-                SecondaryAction.cancelled -= m_Wrapper.m_TwoButtonsActionsCallbackInterface.OnSecondaryAction;
-            }
-            m_Wrapper.m_TwoButtonsActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                PrimaryAction.started += instance.OnPrimaryAction;
-                PrimaryAction.performed += instance.OnPrimaryAction;
-                PrimaryAction.cancelled += instance.OnPrimaryAction;
-                SecondaryAction.started += instance.OnSecondaryAction;
-                SecondaryAction.performed += instance.OnSecondaryAction;
-                SecondaryAction.cancelled += instance.OnSecondaryAction;
-            }
-        }
     }
     public TwoButtonsActions @TwoButtons
     {
@@ -145,9 +116,4 @@ public class InputMaster : InputActionAssetReference
             return asset.controlSchemes[m_CustomHIDTwoButtonSwitchSchemeIndex];
         }
     }
-}
-public interface ITwoButtonsActions
-{
-    void OnPrimaryAction(InputAction.CallbackContext context);
-    void OnSecondaryAction(InputAction.CallbackContext context);
 }

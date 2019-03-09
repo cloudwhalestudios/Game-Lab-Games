@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     {
         None,
         Boot,
-        MainMenu,
         Shutdown,
+        MainMenu,
         PlayerSelect,
         Path,
         Play,
@@ -139,11 +139,12 @@ public class GameManager : MonoBehaviour
     {
         NotPlaying,
         Waiting,
-        Start,
+        StartTurn,
         Angle,
         Distance,
-        Finish,
-        Switch
+        LaunchBall,
+        EndTurn,
+        PathSelect
     }
 
     [Serializable]
@@ -152,10 +153,11 @@ public class GameManager : MonoBehaviour
         [SerializeField, ReadOnly] private PlayState state;
         [SerializeField, ReadOnly] private PlayState lastState;
         [SerializeField, ReadOnly] private int currentPlayerIndex;
-        [SerializeField, ReadOnly] private static int nextPlayerId = -1;
+        [SerializeField, ReadOnly] private static int NEXT_PLAYER_ID = -1;
         [SerializeField, ReadOnly] private List<int> playerIds;
 
         public bool allowRevert;
+        public bool enablePathSelect;
         
         public PlayState State
         {
@@ -174,6 +176,32 @@ public class GameManager : MonoBehaviour
             State = state;
         }
 
+        public void CurrentState()
+        {
+            switch (State)
+            {
+                case PlayState.NotPlaying:
+                    break;
+                case PlayState.Waiting:
+                    WaitForPlayer(currentPlayerIndex);
+                    break;
+                case PlayState.StartTurn:
+                    break;
+                case PlayState.Angle:
+                    break;
+                case PlayState.Distance:
+                    break;
+                case PlayState.LaunchBall:
+                    break;
+                case PlayState.EndTurn:
+                    break;
+                case PlayState.PathSelect:
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public bool AdvanceState(PlayState desiredState = PlayState.NotPlaying)
         {
             if (state == desiredState)
@@ -189,28 +217,37 @@ public class GameManager : MonoBehaviour
                         State = PlayState.Waiting;
                         break;
                     case PlayState.Waiting:
-                        State = PlayState.Start;
+                        //WaitForPlayer(currentPlayerIndex);
+                        if (enablePathSelect)
+                        {
+                            State = PlayState.PathSelect;
+                            break;
+                        }
+                        State = PlayState.StartTurn;
                         break;
-                    case PlayState.Start:
+                    case PlayState.PathSelect: // TODO implement better logic for path selection (only happens once)
+                        State = PlayState.StartTurn;
+                        break;
+                    case PlayState.StartTurn:
                         State = PlayState.Angle;
                         break;
                     case PlayState.Angle:
                         State = PlayState.Distance;
                         break;
                     case PlayState.Distance:
-                        State = PlayState.Finish;
+                        State = PlayState.LaunchBall;
                         break;
-                    case PlayState.Finish:
-                        State = PlayState.Switch;
+                    case PlayState.LaunchBall:
+                        State = PlayState.EndTurn;
                         break;
-                    case PlayState.Switch:
+                    case PlayState.EndTurn:
                         State = PlayState.Waiting;
                         break;
                     default:
                         break;
                 }
                 
-                if (state == desiredState)
+                if (State == desiredState)
                 {
                     print("Desired play state is now active.");
                     return true;
@@ -250,7 +287,7 @@ public class GameManager : MonoBehaviour
 
         public int AddPlayer()
         {
-            var id = nextPlayerId++;
+            var id = NEXT_PLAYER_ID++;
             playerIds.Add(id);
             return id;
         }
@@ -259,27 +296,40 @@ public class GameManager : MonoBehaviour
         {
             return playerIds.Remove(playerId);
         }
-            
+
+        public void EndTurn(int pID)
+        {
+            if (IsCurrentPlayer(pID))
+            {
+                while(AdvanceState(PlayState.EndTurn)) { }
+                if (State == PlayState.EndTurn)
+                {
+                    currentPlayerIndex = (currentPlayerIndex++) % playerIds.Count;
+                    print("Ending turn for player " + pID);
+                    return;
+                }
+            }
+            print("Another player is trying to end current players turn!");
+        }
+        public void WaitForPlayer(int pID)
+        {
+            print("Waiting for player " + pID);
+        }
     }
     #endregion
 
-    public enum InputMode
+    public enum GoalMode
     {
-        OneButton,
-        TwoButtons,
-        ThreeButtons,
-        Full,
+        OnTheGreen,
+        InTheHole
     }
-    public InputMode inputMode = InputMode.TwoButtons;
 
     [Header("State controls")]
     public GameStateController gameStateController;
     public PlayStateController playStateController;
-
-    public float autoAdvanceTimer = 5f;
-
-    [SerializeField, ReadOnly] private float elapsedAdvanceTime = 0;
-    [SerializeField, ReadOnly] private bool takeInfluence = false;
+  
+    [Header("Gameplay")]
+    public GoalMode goal = GoalMode.OnTheGreen;
 
     public void Awake()
     {
@@ -303,11 +353,23 @@ public class GameManager : MonoBehaviour
         playStateController = new PlayStateController(PlayState.NotPlaying);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
 
-    
+    public bool IsGoalConditionFullfilled(int pID)
+    {
+        switch (goal)
+        {
+            case GoalMode.OnTheGreen:
+                
+                break;
+            case GoalMode.InTheHole:
+                break;
+            default:
+                break;
+        }
+        return false;
+    }
 }
