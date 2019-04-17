@@ -34,6 +34,23 @@ public class MenuController : MonoBehaviour
     private bool goingForward;
     private bool goingGame;
 
+    private bool pressStart;
+
+    public GameObject pressSpace;
+
+    void Update()
+    {
+        if (!pressStart)
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                pressStart = true;
+                pressSpace.SetActive(false);
+                GoToScreen(MainMenuScreen, forward, forwardAlt);
+            }
+        }
+    }
+
     public void MouseHover()
     {
     	if (!alternateSounds) {
@@ -41,6 +58,11 @@ public class MenuController : MonoBehaviour
     	} else if (alternateSounds) {
     		selectAlt.Play(0);
     	}
+    }
+
+    public void PlayBackSound()
+    {
+        forward.Play(0);
     }
 
     private void DeactivateAllScreens()
@@ -81,13 +103,19 @@ public class MenuController : MonoBehaviour
     public void SelectedGame1()
     {
         GoToScreen(null, gameSelect, gameSelectAlt);
+        pressStart = false;
+        pressSpace.SetActive(true);
     }
     public void SelectedGame2()
     {
         GoToScreen(null, gameSelect, gameSelectAlt);
+        pressStart = false;
+        pressSpace.SetActive(true);
     }
     public void SelectedGame3()
     {
         GoToScreen(null, gameSelect, gameSelectAlt);
+        pressStart = false;
+        pressSpace.SetActive(true);
     }    
 }

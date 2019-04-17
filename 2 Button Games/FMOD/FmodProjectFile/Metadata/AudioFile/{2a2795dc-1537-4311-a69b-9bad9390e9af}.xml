@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{2a2795dc-1537-4311-a69b-9bad9390e9af}">
+        <property name="assetPath">
+            <value>Harp.mp3</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>134.00816326530611</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{9659d701-cbd4-45b3-8d64-2452d20fcd5f}</destination>
+        </relationship>
+    </object>
+</objects>
